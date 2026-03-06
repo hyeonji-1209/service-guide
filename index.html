@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>웹 & 앱 개발 서비스 안내</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+  :root {
+    --primary: #111111;
+    --secondary: #555555;
+    --accent: #2563eb;
+    --bg: #ffffff;
+    --bg-alt: #fafafa;
+    --border: #e5e5e5;
+    --radius: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--primary);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── 히어로 ── */
+  .hero {
+    padding: 100px 24px 80px;
+    text-align: center;
+    background: var(--bg);
+  }
+  .hero-label {
+    font-size: 0.75em;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: 2.4em;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.3;
+    margin-bottom: 24px;
+  }
+  .hero p {
+    font-size: 1.05em;
+    font-weight: 300;
+    color: var(--secondary);
+    max-width: 460px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+  .hero-line {
+    width: 40px;
+    height: 2px;
+    background: var(--primary);
+    margin: 40px auto 0;
+  }
+
+  /* ── 섹션 ── */
+  .section {
+    padding: 70px 0;
+    border-top: 1px solid var(--border);
+  }
+  .section-label {
+    font-size: 0.7em;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 40px;
+    letter-spacing: -0.3px;
+  }
+  .section-desc {
+    font-size: 0.95em;
+    color: var(--secondary);
+    margin-top: -28px;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  /* ── 프로젝트 리스트 ── */
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .project-grid-item {
+    background: var(--bg);
+    padding: 24px;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: 400;
+    color: var(--primary);
+  }
+  .project-grid-item span {
+    display: block;
+    font-size: 0.78em;
+    color: var(--secondary);
+    margin-top: 4px;
+    font-weight: 300;
+  }
+
+  /* ── 스텝 ── */
+  .step {
+    display: flex;
+    gap: 28px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78em;
+    font-weight: 600;
+    color: var(--accent);
+    min-width: 28px;
+    padding-top: 2px;
+  }
+  .step-title {
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .step-period {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8em;
+    color: var(--accent);
+    font-weight: 500;
+    margin-left: 8px;
+  }
+  .step-desc {
+    font-size: 0.88em;
+    color: var(--secondary);
+    font-weight: 300;
+  }
+
+  /* ── 테이블 ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+  }
+  th {
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 0.72em;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--secondary);
+    border-bottom: 2px solid var(--primary);
+  }
+  td {
+    padding: 14px 16px;
+    font-size: 0.9em;
+    border-bottom: 1px solid var(--border);
+    font-weight: 400;
+  }
+  td:last-child {
+    font-family: 'Inter', 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    text-align: right;
+    white-space: nowrap;
+  }
+  th:last-child { text-align: right; }
+  tr:last-child td { border-bottom: none; }
+
+  .table-note {
+    font-size: 0.82em;
+    color: var(--secondary);
+    font-weight: 300;
+    margin-top: 12px;
+    padding-left: 2px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0;
+  }
+  .tag {
+    font-size: 0.78em;
+    font-weight: 500;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--secondary);
+  }
+
+  .callout {
+    background: var(--bg-alt);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    font-size: 0.88em;
+    color: var(--secondary);
+    margin: 24px 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-weight: 400;
+  }
+
+  /* ── FAQ ── */
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-item:first-child { border-top: 1px solid var(--border); }
+  .faq-q {
+    padding: 20px 0;
+    font-size: 0.95em;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.2s;
+  }
+  .faq-q:hover { color: var(--accent); }
+  .faq-q::after {
+    content: '+';
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2em;
+    font-weight: 300;
+    color: var(--secondary);
+    transition: transform 0.3s;
+  }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    font-size: 0.9em;
+    color: var(--secondary);
+    font-weight: 300;
+    line-height: 1.8;
+  }
+  .faq-item.active .faq-a {
+    max-height: 200px;
+    padding-bottom: 20px;
+  }
+  .faq-item.active .faq-q::after {
+    content: '−';
+  }
+
+  /* ── 주의사항 ── */
+  .notice-group {
+    margin-bottom: 32px;
+  }
+  .notice-group h4 {
+    font-size: 0.88em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--primary);
+  }
+  .notice-group li {
+    font-size: 0.88em;
+    color: var(--secondary);
+    font-weight: 300;
+    padding: 3px 0;
+    list-style: none;
+    padding-left: 16px;
+    position: relative;
+  }
+  .notice-group li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* ── 기술 스택 ── */
+  .tech-row {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+  .tech-row:first-child { border-top: 1px solid var(--border); }
+  .tech-label {
+    min-width: 120px;
+    font-size: 0.78em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 2px;
+  }
+  .tech-value {
+    font-size: 0.9em;
+    font-weight: 300;
+    color: var(--secondary);
+  }
+
+  /* ── CTA ── */
+  .cta {
+    padding: 80px 24px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  .cta-label {
+    font-size: 0.7em;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .cta h2 {
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-bottom: 32px;
+    letter-spacing: -0.3px;
+  }
+  .cta-info {
+    display: inline-block;
+    text-align: left;
+  }
+  .cta-info p {
+    font-size: 0.9em;
+    color: var(--secondary);
+    font-weight: 300;
+    padding: 4px 0;
+  }
+  .cta-info strong {
+    font-weight: 500;
+    color: var(--primary);
+    display: inline-block;
+    min-width: 80px;
+  }
+  .cta-bottom {
+    margin-top: 40px;
+    font-size: 0.95em;
+    font-weight: 400;
+    color: var(--primary);
+    background: var(--bg-alt);
+    display: inline-block;
+    padding: 16px 36px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    line-height: 1.6;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 30px 24px;
+    font-size: 0.78em;
+    color: #bbb;
+    font-weight: 300;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── 반응형 ── */
+  @media (max-width: 600px) {
+    .hero { padding: 70px 24px 60px; }
+    .hero h1 { font-size: 1.7em; }
+    .section { padding: 50px 0; }
+    .project-grid { grid-template-columns: 1fr 1fr; }
+    .tech-row { flex-direction: column; gap: 4px; }
+    .tech-label { min-width: auto; }
+    .step { gap: 16px; }
+    td, th { padding: 12px 10px; font-size: 0.85em; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 히어로 -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-label">Service Guide</div>
+    <h1>웹 & 앱 개발<br>서비스 안내</h1>
+    <p>기획 상담부터 배포까지,<br>아이디어를 현실로 만들어드립니다.</p>
+    <div class="hero-line"></div>
+  </div>
+</div>
+
+<!-- 프로젝트 경험 -->
+<div class="section">
+  <div class="container">
+    <div class="section-label">Projects</div>
+    <h2 class="section-title">이런 프로젝트를 만들어왔습니다</h2>
+    <div class="project-grid">
+      <div class="project-grid-item">소개 사이트<span>랜딩페이지</span></div>
+      <div class="project-grid-item">쇼핑몰<span>결제·장바구니·관리자</span></div>
+      <div class="project-grid-item">웹 애플리케이션<span>예약·관리 시스템</span></div>
+      <div class="project-grid-item">모바일 앱<span>iOS / Android</span></div>
+      <div class="project-grid-item">API 서버<span>백엔드 구축</span></div>
+      <div class="project-grid-item">맞춤 개발<span>상담 후 결정</span></div>
+    </div>
+    <p class="table-note">포트폴리오가 궁금하시면 상담 시 공유드리겠습니다.</p>
+  </div>
+</div>
+
+<!-- 진행 과정 -->
+<div class="section" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="section-label">Process</div>
+    <h2 class="section-title">진행 과정</h2>
+    <div>
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">무료 상담 <span class="step-period">1~2일</span></div>
+          <div class="step-desc">온라인 미팅 또는 메신저로 편하게 · 참고 사이트나 아이디어만 있어도 충분합니다</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">견적 안내 및 계약 <span class="step-period">1일</span></div>
+          <div class="step-desc">상담 내용 기반 맞춤 견적서 전달 · 개발 범위, 일정, 금액 확정</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">디자인 <span class="step-period">3~7일</span></div>
+          <div class="step-desc">시안 공유 후 피드백 반영 · 마음에 드실 때까지 조율합니다</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div>
+          <div class="step-title">개발 <span class="step-period">1~4주</span></div>
+          <div class="step-desc">중간 진행 상황을 주 1~2회 공유합니다</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div>
+          <div class="step-title">테스트 및 수정 <span class="step-period">3~5일</span></div>
+          <div class="step-desc">직접 확인 후 수정 요청 · 기획 범위 내 수정은 무제한</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">06</div>
+        <div>
+          <div class="step-title">배포 및 인수인계 <span class="step-period">1~2일</span></div>
+          <div class="step-desc">서버 배포 · 관리 방법 안내 및 매뉴얼 전달</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 비용 -->
+<div class="section">
+  <div class="container">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">예상 비용</h2>
+    <p class="section-desc">프로젝트 규모에 따라 달라지며, 아래는 대략적인 참고 범위입니다.</p>
+
+    <table>
+      <thead>
+        <tr><th>프로젝트 유형</th><th style="text-align:center;">기간</th><th>예상 금액</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>랜딩페이지 / 소개 사이트</td><td style="text-align:center;">1~2주</td><td>80~180만원</td></tr>
+        <tr><td>쇼핑몰</td><td style="text-align:center;">4~6주</td><td>380~550만원</td></tr>
+        <tr><td>웹 애플리케이션 (관리자 포함)</td><td style="text-align:center;">4~8주</td><td>500~900만원</td></tr>
+        <tr><td>모바일 앱 (iOS + Android)</td><td style="text-align:center;">6~10주</td><td>500~1,000만원</td></tr>
+        <tr><td>모바일 앱 (한 플랫폼)</td><td style="text-align:center;">4~7주</td><td>300~600만원</td></tr>
+        <tr><td>API / 백엔드</td><td style="text-align:center;">2~4주</td><td>180~380만원</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tags">
+      <span class="tag">기획 상담</span>
+      <span class="tag">UI 디자인</span>
+      <span class="tag">개발</span>
+      <span class="tag">테스트</span>
+      <span class="tag">배포 (웹)</span>
+      <span class="tag">반응형</span>
+    </div>
+
+    <div class="callout">앱 프로젝트의 경우 스토어 등록(배포)은 포함되지 않으며, 필요 시 별도 대행 가능합니다.</div>
+
+    <h3 style="font-size:1.1em; font-weight:600; margin:40px 0 8px;">기능별 추가 비용</h3>
+    <table>
+      <thead>
+        <tr><th>기능</th><th>금액</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>소셜 로그인 (카카오/네이버/구글)</td><td>15만원 / 1개당</td></tr>
+        <tr><td>회원가입 / 로그인</td><td>30만원</td></tr>
+        <tr><td>게시판</td><td>25만원</td></tr>
+        <tr><td>결제 연동 (PG)</td><td>60만원</td></tr>
+        <tr><td>관리자 페이지</td><td>80만원~</td></tr>
+        <tr><td>알림 (이메일/SMS/푸시)</td><td>20만원 / 1종당</td></tr>
+        <tr><td>지도 연동</td><td>15만원</td></tr>
+        <tr><td>차트 / 통계 대시보드</td><td>30~50만원</td></tr>
+        <tr><td>푸시 알림 (앱)</td><td>20만원</td></tr>
+        <tr><td>앱 스토어 등록 대행</td><td>20만원</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">상담 시 필요한 기능을 말씀해 주시면, 항목별로 정리된 맞춤 견적서를 보내드립니다.</p>
+
+    <h3 style="font-size:1.1em; font-weight:600; margin:40px 0 8px;">별도 비용 <span style="font-weight:300; font-size:0.85em; color:var(--secondary);">고객 부담</span></h3>
+    <table>
+      <thead>
+        <tr><th>항목</th><th>비용</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>도메인</td><td>연 1~3만원</td></tr>
+        <tr><td>서버 / 호스팅</td><td>월 1~10만원</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">구매가 어려우시면 무료로 안내 도와드립니다.</p>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">자주 묻는 질문</h2>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">기획서가 없어도 되나요?</div>
+      <div class="faq-a">네, 참고 사이트나 대략적인 아이디어만 있으면 상담하면서 같이 정리합니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">개발 기간은 얼마나 걸리나요?</div>
+      <div class="faq-a">소개 사이트 1~2주, 쇼핑몰 4~6주, 웹앱 4~8주 정도입니다. 기획이 정리되어 있으면 더 빠릅니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">결제는 어떻게 하나요?</div>
+      <div class="faq-a">착수금 50% → 완료 후 잔금 50% 방식입니다. 큰 프로젝트는 3회 분할도 가능합니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">디자인도 해주시나요?</div>
+      <div class="faq-a">기본 UI 디자인은 포함입니다. 별도 고퀄리티 시안이 필요하면 협의 후 진행 가능합니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">배포 후 수정이 필요하면요?</div>
+      <div class="faq-a">배포 후 1개월간 무상으로 버그 수정 및 간단한 수정을 지원합니다. 이후에는 유지보수 계약으로 진행 가능합니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">소스코드는 받을 수 있나요?</div>
+      <div class="faq-a">네, 완료 후 전체 소스코드를 전달드립니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">중간에 취소하면 환불되나요?</div>
+      <div class="faq-a">착수 전이면 전액 환불, 진행 중이면 진행률에 따라 협의합니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">계약서는 작성하나요?</div>
+      <div class="faq-a">네, 범위·일정·금액·수정 정책을 명시한 계약서를 작성합니다.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 주의사항 -->
+<div class="section">
+  <div class="container">
+    <div class="section-label">Guidelines</div>
+    <h2 class="section-title">원활한 진행을 위한 안내</h2>
+
+    <div class="notice-group">
+      <h4>기능 추가</h4>
+      <ul>
+        <li>계약 시 확정된 범위 내에서 개발이 진행됩니다</li>
+        <li>사전 협의 없이 추가되는 기능은 별도 견적 대상입니다</li>
+        <li>추가 기능이 필요하시면 미리 말씀해 주시면 일정과 비용을 조율해드립니다</li>
+      </ul>
+    </div>
+    <div class="notice-group">
+      <h4>개발 기간</h4>
+      <ul>
+        <li>무리한 일정 단축은 품질에 영향을 줄 수 있어 어렵습니다</li>
+        <li>급행이 필요한 경우 20~50% 할증이 적용되며, 사전 협의가 필요합니다</li>
+      </ul>
+    </div>
+    <div class="notice-group">
+      <h4>수정 요청</h4>
+      <ul>
+        <li>기획 범위 내 수정은 무제한 반영합니다</li>
+        <li>전체 디자인 변경, 기능 구조 재설계 등 대규모 변경은 추가 작업에 해당합니다</li>
+        <li>수정 사항은 한 번에 모아서 전달해 주시면 효율적으로 반영됩니다</li>
+      </ul>
+    </div>
+    <div class="notice-group">
+      <h4>커뮤니케이션</h4>
+      <ul>
+        <li>피드백은 2~3일 이내에 주시면 일정이 밀리지 않습니다</li>
+        <li>장기간 연락이 없으면 프로젝트가 지연될 수 있습니다</li>
+      </ul>
+    </div>
+
+    <div class="callout">서로 기분 좋게 프로젝트를 마무리하기 위한 안내입니다. 궁금한 점은 언제든 편하게 물어봐 주세요.</div>
+  </div>
+</div>
+
+<!-- 기술 스택 -->
+<div class="section" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="section-label">Tech Stack</div>
+    <h2 class="section-title">사용 기술</h2>
+
+    <div class="tech-row">
+      <div class="tech-label">Frontend</div>
+      <div class="tech-value">React, Next.js, Flutter Web</div>
+    </div>
+    <div class="tech-row">
+      <div class="tech-label">Mobile</div>
+      <div class="tech-value">Flutter, React Native (iOS/Android 동시 개발)</div>
+    </div>
+    <div class="tech-row">
+      <div class="tech-label">Backend</div>
+      <div class="tech-value">Node.js, Express, Firebase</div>
+    </div>
+    <div class="tech-row">
+      <div class="tech-label">Database</div>
+      <div class="tech-value">MySQL, PostgreSQL, MongoDB, Firestore</div>
+    </div>
+    <div class="tech-row">
+      <div class="tech-label">Infra</div>
+      <div class="tech-value">AWS, Vercel, Firebase Hosting</div>
+    </div>
+    <div class="tech-row">
+      <div class="tech-label">Payment</div>
+      <div class="tech-value">토스페이먼츠, KG이니시스</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="container">
+    <div class="cta-label">Contact</div>
+    <h2>상담 안내</h2>
+    <div class="cta-info">
+      <p><strong>비용</strong>무료</p>
+      <p><strong>시간</strong>평일 09:00 ~ 17:00</p>
+      <p><strong>방법</strong>숨고 채팅 또는 카카오톡</p>
+      <p><strong>응답</strong>보통 1시간 이내</p>
+    </div>
+    <br><br>
+    <div class="cta-bottom">
+      아직 구체적이지 않아도 괜찮습니다.<br>
+      "이런 거 만들 수 있나요?" 정도의 가벼운 질문도 환영합니다.
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  본 안내서의 금액은 참고용이며, 실제 견적은 상담을 통해 맞춤으로 안내드립니다.
+</div>
+
+</body>
+</html>
